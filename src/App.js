@@ -1,11 +1,15 @@
 //archivo principal
-import React from 'react';
+//fragment es como crear un div, pero no se muestra
+import React, {Fragment} from 'react';
+//exportamos nuestra componente
+import Header from './componentes/Header'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hola mundo</h1>
-    </div>
+    <Fragment>
+      <Header/>
+    </Fragment>
+    
   );
 }
 

@@ -1,12 +1,20 @@
+//para poder utilizar el state
 import React from 'react'
 
-const Formulario  = () => {
+const Formulario  = ({cantidad, guardarCantidad}) => {
+  //definir funcion
+  const leerCantidad = (e) =>{
+    guardarCantidad(parseInt(e.target.value));
+  }
   return ( 
     <form>
+    {cantidad}
+
       <div className="row">
         <div>
           <label>Cantidad Prestamo</label>
-          <input className="u-full-width" type="number" placeholder="Ejemplo: 3000"/>
+          <input className="u-full-width" type="number" placeholder="Ejemplo: 3000"
+          onChange={leerCantidad} />
         </div>
         <div>
         <label>Plazo para Pagar</label>

@@ -15,6 +15,7 @@ function App() {
 
   //definir state
   const[cantidad, guardarCantidad] = useState(0);
+  const[plazo, guardarPlazo] = useState(0);
 
   //react se utiliza className para una clase
   return (
@@ -24,8 +25,10 @@ function App() {
       />
       <div className="container">
         <Formulario
-        cantidad={cantidad}
-        guardarCantidad={guardarCantidad}
+          cantidad={cantidad}
+          guardarCantidad={guardarCantidad}
+          plazo={plazo}
+          guardarPlazo={guardarPlazo}
         />
       </div>
     </Fragment>

@@ -15,7 +15,7 @@ function App() {
 
   //definir state
   const[cantidad, guardarCantidad] = useState(0);
-  const[plazo, guardarPlazo] = useState(0);
+  const[plazo, guardarPlazo] = useState('');
 
   //react se utiliza className para una clase
   return (

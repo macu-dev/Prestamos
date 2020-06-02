@@ -3,7 +3,8 @@ import React,{Fragment, useState} from 'react';
 //importar la funcion calcular total
 import{calcularTotal} from '../helpers';
 
-const Formulario  = ({cantidad, guardarCantidad, plazo, guardarPlazo}) => {
+const Formulario  = (props) => {
+  const {cantidad, guardarCantidad, plazo, guardarPlazo, total, guardarTotal} = props;
 
   //definir state local
   const [error, guardarError]= useState(false);
@@ -26,7 +27,8 @@ const Formulario  = ({cantidad, guardarCantidad, plazo, guardarPlazo}) => {
 
     //realizar el calculo
     const totalAPagar = calcularTotal(cantidad, plazo);
-    console.log(totalAPagar);
+    //una vez calculado, guardarTotal
+    guardarTotal(totalAPagar);
   }
 
   return ( 

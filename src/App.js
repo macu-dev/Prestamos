@@ -5,6 +5,7 @@ import React, {Fragment, useState} from 'react';
 import Header from './componentes/Header';
 //exportamos nuestro formulario
 import Formulario from './componentes/Formulario';
+import { calcularTotal } from './helpers';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
   //definir state
   const[cantidad, guardarCantidad] = useState(0);
   const[plazo, guardarPlazo] = useState('');
+  //otra pieza de state 
+  const [total, guardarTotal] = useState(0);
 
   //react se utiliza className para una clase
   return (
@@ -29,7 +32,11 @@ function App() {
           guardarCantidad={guardarCantidad}
           plazo={plazo}
           guardarPlazo={guardarPlazo}
+          total = {total}
+          guardarTotal = {guardarTotal}
         />
+        <p>Total a pagar: ${total}</p>
+        
       </div>
     </Fragment>
     

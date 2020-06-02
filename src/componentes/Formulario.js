@@ -1,5 +1,7 @@
 //para poder utilizar el state
-import React,{Fragment, useState} from 'react'
+import React,{Fragment, useState} from 'react';
+//importar la funcion calcular total
+import{calcularTotal} from '../helpers';
 
 const Formulario  = ({cantidad, guardarCantidad, plazo, guardarPlazo}) => {
 
@@ -21,6 +23,9 @@ const Formulario  = ({cantidad, guardarCantidad, plazo, guardarPlazo}) => {
 
     //elimina el error previo 
     guardarError(false);
+
+    //realizar el calculo
+    calcularTotal(cantidad, plazo);
   }
 
   return ( 

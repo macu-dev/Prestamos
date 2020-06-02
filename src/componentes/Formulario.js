@@ -25,7 +25,8 @@ const Formulario  = ({cantidad, guardarCantidad, plazo, guardarPlazo}) => {
     guardarError(false);
 
     //realizar el calculo
-    calcularTotal(cantidad, plazo);
+    const totalAPagar = calcularTotal(cantidad, plazo);
+    console.log(totalAPagar);
   }
 
   return ( 

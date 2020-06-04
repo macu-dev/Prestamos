@@ -1,15 +1,15 @@
 //para poder utilizar el state
-import React,{Fragment, useState} from 'react';
+import React, {Fragment, useState} from 'react';
 //importar la funcion calcular total
-import{calcularTotal} from '../helpers';
+import {calcularTotal} from '../helpers';
 
 const Formulario  = (props) => {
-  const {cantidad, guardarCantidad, plazo, guardarPlazo, total, guardarTotal} = props;
+  const {cantidad, guardarCantidad, plazo, guardarPlazo, guardarTotal, guardarCargando} = props;
 
   //definir state local
   const [error, guardarError]= useState(false);
   //definir funcion
-  const leerCantidad = (e) =>{
+  const leerCantidad = (e) => {
     guardarCantidad(parseInt(e.target.value));
   }
 
@@ -25,10 +25,20 @@ const Formulario  = (props) => {
     //elimina el error previo 
     guardarError(false);
 
-    //realizar el calculo
-    const totalAPagar = calcularTotal(cantidad, plazo);
-    //una vez calculado, guardarTotal
-    guardarTotal(totalAPagar);
+    //habilitar el spinner
+    guardarCargando(true);
+
+    //spinner
+    setTimeout(() => {
+      //realizar el calculo
+      const totalAPagar = calcularTotal(cantidad, plazo);
+      //una vez calculado, guardarTotal
+      guardarTotal(totalAPagar);
+      //desahabilitar el spinner
+      guardarCargando(false);
+    }, 3000);
+
+    
   }
 
   return ( 

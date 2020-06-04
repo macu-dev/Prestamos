@@ -5,11 +5,11 @@ import React, {Fragment, useState} from 'react';
 import Header from './componentes/Header';
 //exportamos nuestro formulario
 import Formulario from './componentes/Formulario';
-import { calcularTotal } from './helpers';
+// import { calcularTotal } from './helpers';
 //exportamos el componente de mensaje
 import Mensaje from './componentes/Mensaje'
-import Resultados from './componentes/Resultados'
-import Resultado from './componentes/Resultados';
+import Resultado from './componentes/Resultados'
+import Spinner from './componentes/Spinner'
 
 
 function App() {
@@ -19,17 +19,24 @@ function App() {
   //cantidad va a tener el valor que tenga el state
 
   //definir state
-  const[cantidad, guardarCantidad] = useState(0);
-  const[plazo, guardarPlazo] = useState('');
+  const [cantidad, guardarCantidad] = useState(0);
+  const [plazo, guardarPlazo] = useState('');
   //otra pieza de state 
   const [total, guardarTotal] = useState(0);
+  const [cargando, guardarCargando] = useState(false);
 
   let componente;
-  //carga condicional de componentes
-  if(total === 0){
+  if(cargando){
+    componente = <Spinner/>;
+  }else if(total === 0){
+    //carga condicional de componentes
     componente = <Mensaje/>
   }else{
-    componente = <Resultado/>
+    componente = <Resultado
+                  total={total}
+                  plazo={plazo}
+                  cantidad={cantidad}
+                />
   }
 
   //react se utiliza className para una clase
@@ -44,8 +51,8 @@ function App() {
           guardarCantidad={guardarCantidad}
           plazo={plazo}
           guardarPlazo={guardarPlazo}
-          total = {total}
           guardarTotal = {guardarTotal}
+          guardarCargando = {guardarCargando}
         />
         <div className="mensajes">
           {componente}
